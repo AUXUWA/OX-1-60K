@@ -1,0 +1,8 @@
+# Gowin 构建产物（.gprj 所在目录下的 impl/）
+/impl/
+*.gprj.user
+
+# ModelSim 本地仿真产物
+work/
+transcript
+*.wdb

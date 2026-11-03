@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE gowin-fpga-project>
+<!--
+  OX-1 —— 基于 FPGA 的实时多音色 FM 合成电子乐器引擎
+  目标器件：Sipeed Tang Mega 60K（GW5AT-LV60PG484AC1/I0 / GW5AT-60B）
+-->
+<Project>
+    <Template>FPGA</Template>
+    <Version>5</Version>
+    <Device name="GW5AT-60B" pn="GW5AT-LV60PG484AC1/I0">gw5at60b-002</Device>
+    <FileList>
+        <File path="rtl/top/fm_synth_top.v" type="file.verilog" enable="1"/>
+        <File path="rtl/top/demo_note.v" type="file.verilog" enable="1"/>
+        <File path="rtl/top/patch_bank.v" type="file.verilog" enable="1"/>
+
+        <File path="rtl/top/clk_gen.v" type="file.verilog" enable="1"/>
+        <File path="rtl/top/rst_sync.v" type="file.verilog" enable="1"/>
+        <File path="rtl/top/tdm_group.v" type="file.verilog" enable="1"/>
+        <File path="rtl/top/test_tone_src.v" type="file.verilog" enable="1"/>
+
+        <File path="rtl/io/audio/i2s_tx.v" type="file.verilog" enable="1"/>
+
+        <File path="rtl/io/input/key_debounce.v" type="file.verilog" enable="1"/>
+        <File path="rtl/io/input/encoder_rotary.v" type="file.verilog" enable="1"/>
+        <File path="rtl/io/input/keypad_4x4.v" type="file.verilog" enable="1"/>
+
+        <File path="rtl/io/output/led_driver.v" type="file.verilog" enable="1"/>
+
+        <File path="rtl/io/video/hdmi_tx_top.v" type="file.verilog" enable="1"/>
+        <File path="rtl/io/video/video_timing.v" type="file.verilog" enable="1"/>
+        <File path="rtl/io/video/tmds_encoder.v" type="file.verilog" enable="1"/>
+        <File path="rtl/io/video/tmds_serializer.v" type="file.verilog" enable="1"/>
+        <File path="rtl/top/clk_gen_video.v" type="file.verilog" enable="1"/>
+
+        <File path="rtl/io/video/char_rom.v" type="file.verilog" enable="1"/>
+        <File path="rtl/io/video/text_buf.v" type="file.verilog" enable="1"/>
+        <File path="rtl/io/video/param_panel.v" type="file.verilog" enable="1"/>
+        <File path="rtl/io/video/display_top.v" type="file.verilog" enable="1"/>
+        <File path="rtl/io/video/scope_capture.v" type="file.verilog" enable="1"/>
+        <File path="rtl/io/video/wave_plot.v" type="file.verilog" enable="1"/>
+        <File path="rtl/io/video/lissajous.v" type="file.verilog" enable="1"/>
+        <File path="rtl/io/video/spectrum_dft.v" type="file.verilog" enable="1"/>
+        <File path="rtl/io/video/spectrum_bars.v" type="file.verilog" enable="1"/>
+        <File path="rtl/io/video/level_meter.v" type="file.verilog" enable="1"/>
+        <File path="rtl/io/video/adsr_graph.v" type="file.verilog" enable="1"/>
+        <File path="rtl/io/video/stat_panel.v" type="file.verilog" enable="1"/>
+        <File path="rtl/io/video/font_8x16.hex" type="file.other" enable="1"/>
+
+        <File path="rtl/common/algo_tab.vh" type="file.other" enable="1"/>
+
+        <File path="rtl/audio/shared/logsin_rom.v" type="file.verilog" enable="1"/>
+        <File path="rtl/audio/shared/exp_rom.v" type="file.verilog" enable="1"/>
+        <File path="rtl/audio/shared/wave_gen.v" type="file.verilog" enable="1"/>
+        <File path="rtl/common/eg_incstep_tab.vh" type="file.other" enable="1"/>
+        <File path="rtl/audio/shared/chip_lfo.v" type="file.verilog" enable="1"/>
+        <File path="rtl/audio/shared/chip_eg_timer.v" type="file.verilog" enable="1"/>
+
+        <File path="rtl/audio/op/op_ksl_ksr.v" type="file.verilog" enable="1"/>
+        <File path="rtl/audio/op/op_router.v" type="file.verilog" enable="1"/>
+        <File path="rtl/audio/op/op_scale.v" type="file.verilog" enable="1"/>
+        <File path="rtl/audio/op/op_core.v" type="file.verilog" enable="1"/>
+
+        <File path="rtl/audio/fm_engine.v" type="file.verilog" enable="1"/>
+        <File path="rtl/audio/fm_voice.v" type="file.verilog" enable="1"/>
+        <File path="rtl/audio/mixer/audio_mixer.v" type="file.verilog" enable="1"/>
+        <File path="rtl/audio/mixer/saturate.v" type="file.verilog" enable="1"/>
+        <File path="rtl/audio/mixer/effects.v" type="file.verilog" enable="1"/>
+
+        <File path="rtl/mem/phase_store.v" type="file.verilog" enable="1"/>
+        <File path="rtl/mem/eg_state_store.v" type="file.verilog" enable="1"/>
+        <File path="rtl/mem/param_store.v" type="file.verilog" enable="1"/>
+        <File path="rtl/mem/note_store.v" type="file.verilog" enable="1"/>
+
+        <File path="rtl/app/note_manager.v" type="file.verilog" enable="1"/>
+        <File path="rtl/app/ui_ctrl.v" type="file.verilog" enable="1"/>
+        <File path="rtl/app/note_keypad.v" type="file.verilog" enable="1"/>
+        <File path="rtl/app/keypad_event_cdc.v" type="file.verilog" enable="1"/>
+        <File path="rtl/app/param_mirror.v" type="file.verilog" enable="1"/>
+
+        <File path="constraints/OX-1-60K.cst" type="file.cst" enable="1"/>
+        <File path="constraints/fm_synth-60K.sdc" type="file.sdc" enable="1"/>
+        <File path="rtl/app/ev_tgl_cdc.v" type="file.verilog" enable="1"/>
+        <File path="rtl/app/param_edit.v" type="file.verilog" enable="1"/>
+        <File path="rtl/app/seq_play.v" type="file.verilog" enable="1"/>
+        <File path="rtl/io/input/keypad_matrix.v" type="file.verilog" enable="1"/>
+        <File path="rtl/io/input/key_bank.v" type="file.verilog" enable="1"/>
+        <File path="rtl/app/perf_mod.v" type="file.verilog" enable="1"/>
+        <File path="rtl/app/seq_evt_cdc.v" type="file.verilog" enable="1"/>
+        <File path="rtl/io/output/ws2812.v" type="file.verilog" enable="1"/>
+        <File path="rtl/io/output/uart.v" type="file.verilog" enable="1"/>
+        <File path="rtl/io/output/ws2812_guide.v" type="file.verilog" enable="1"/>
+        <File path="rtl/app/score_link.v" type="file.verilog" enable="1"/>
+        <File path="rtl/app/score_play.v" type="file.verilog" enable="1"/>
+        <File path="rtl/mem/score_store.v" type="file.verilog" enable="1"/>
+        <File path="rtl/app/seq_play4.v" type="file.verilog" enable="1"/>
+        <File path="rtl/io/video/seq_page.v" type="file.verilog" enable="1"/>
+        <File path="rtl/app/seq_dump_cdc.v" type="file.verilog" enable="1"/>
+        <File path="rtl/mem/patch_store.v" type="file.verilog" enable="1"/>
+        <File path="rtl/app/patch_wr_cdc.v" type="file.verilog" enable="1"/>
+    </FileList>
+</Project>
